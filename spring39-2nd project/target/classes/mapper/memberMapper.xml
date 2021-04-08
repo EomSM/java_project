@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member2">
+	<insert id="insert" parameterType="memberVO">
+		insert into MEMBER2 values
+		(#{mid}, #{pw}, #{name}, #{birthdate}, #{email}, #{tel}, #{kakaotalk},
+		#{gender})
+	</insert>
+
+	<select id="login" parameterType="memberVO"
+		resultType="memberVO">
+		select * from MEMBER2 where mid = #{mid} and pw = #{pw}
+	</select>
+
+	<delete id="delete" parameterType="memberVO">
+		delete from MEMBER2 where mid
+		= #{mid}
+	</delete>
+
+	<update id="update" parameterType="memberVO">
+		update MEMBER2 set pw=#{pw},
+		name =#{name}, birthdate=#{birthdate}, email=#{email}, tel=#{tel},
+		kakaotalk=#{kakaotalk},
+		gender=#{gender} where mid = #{mid}
+	</update>
+
+	<select id="select" parameterType="memberVO">
+		select * from
+		MEMBER2 where mid
+		= #{mid}
+	</select>
+
+
+
+</mapper>

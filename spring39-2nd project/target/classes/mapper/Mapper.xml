@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- member table과 match table을 조인하는 mapper -->
+<!-- 전체 연결해서 보여주는 창을 새로 만들어야 하나 이게 my_info?   -->
+<mapper namespace="">
+	<resultMap type="memberVO" id="memberVO">
+		<result column="MID" property="mid" />
+		<result column="PW" property="pw" />
+		<result column="NAME" property="name" />
+		<result column="BIRTHDATE" property="birthdate" />
+		<result column="EMAIL" property="email" />
+		<result column="TEL" property="tel" />
+		<result column="KAKAOTALK" property="kakaotalk" />
+		<result column="GENDER" property="gender" />
+	</resultMap>
+
+	<resultMap type="matchVO" id="matchVO">
+		<result column="DRINK" property="drink" />
+		<result column="SMOKE" property="smoke" />
+		<result column="BELIEVE" property="believe" />
+		<result column="TALL" property="tall" />
+		<result column="MBTI" property="mbti" />
+		<result column="PLACE" property="place" />
+		<result column="CONTACT" property="contact" />
+		<collection property="memberVO" resultMap="memberVO"></collection>
+	</resultMap>
+
+
+	<select id="login" parameterType="memberVO"
+		resultType="memberVO">
+
+		
+		select * from member2 m1, matchs m2 where m1.MID = m2.MID  ;
+<!--구글링에서 찾은 sql문 변경해본 경우:
+select	a. mid,
+		a. pw,
+		a. name,
+		a. birthdate,
+		a. email,
+		a. tel,
+		a. kakaotalk,
+		a. gender
+
+		b. drink,
+		b. smoke,
+		b. believe,
+		b. tall,
+		b. mbti,
+		b. place,
+		b. contact
+		from
+		member as a
+		Join
+		matchs as b
+		on b.matchs_mid = a.member_mid;
+ -->
+ 	</select>
+</mapper>
