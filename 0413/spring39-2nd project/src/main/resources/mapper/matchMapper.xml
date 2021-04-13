@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="matchs">
+	<insert id="insert" parameterType="matchVO">
+		insert into MATCHS values
+		(#{mid}, #{drink}, #{smoke}, #{believe}, #{tall}, #{mbti}, #{place}, #{contact})
+	</insert>
+
+	<update id="update" parameterType="matchVO">
+		update MATCHS set
+		drink=#{drink}, smoke=#{smoke}, believe=#{believe}, tall=#{tall},
+		mbti=#{mbti}, place=#{place}, contact=#{contact} where mid=#{mid}
+	</update>
+
+	<select id="select" parameterType="matchVO" resultType="matchVO">
+		select *
+		from MATCHS where mid=#{mid}
+	</select>
+</mapper>
