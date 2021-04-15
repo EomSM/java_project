@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,46 +74,72 @@
 		<hr color="white">
 		<form action="matchupdate2">
 
-			아이디: <input name="Mid" type="text" value="${vo.mid}"><br>
-			<!-- id는 사실 세션 가져오는거라 인풋 안 받아도 됨. 연습용. value 안에 넣을 값 테스트 겸 -->
+			아이디: <input name="Mid" type="text" value="${vo.mid}" readonly><br>
 
 			<hr color="white">
-			<table border="1"
-				style="width: 600; height: 1000; background-color: white">
+			<table border="1" style="background-color: white">
 				<tr>
 					<th>음주</th>
-					<th><input name="drink" type="text" value="${vo.drink}">:
-						radio 타입</th>
+					<td><input type="radio"
+						name="drink" value="1"
+						<c:if test="${vo.drink == 1}"> checked="checked"</c:if>>전혀 마시지
+						않아요<br> <input type="radio" name="drink" value="2"
+						<c:if test="${vo.drink == 2}"> checked="checked"</c:if>>어쩔 수 없을
+						때만 마셔요<br> <input type="radio" name="drink" value="3"
+						<c:if test="${vo.drink == 3}"> checked="checked"</c:if>>가끔 마셔요<br>
+						<input type="radio" name="drink" value="4"
+						<c:if test="${vo.drink == 4}"> checked="checked"</c:if>>어느정도 즐기는
+						편이에요 <br> <input type="radio" name="drink" value="5"
+						<c:if test="${vo.drink == 5}"> checked="checked"</c:if>>자주 술자리를
+						가지는 편이에요</td>
 				</tr>
 
 				<tr>
 					<th>흡연</th>
-					<th><input name="smoke" value="${vo.smoke}">radio 타입</th>
+					<td><input type="radio"
+						name="smoke" value="1"
+						<c:if test="${vo.smoke == 1}"> checked="checked"</c:if>>흡연자에요<br>
+						<input type="radio" name="smoke" value="2"
+						<c:if test="${vo.smoke == 2}"> checked="checked"</c:if>>담배를 전혀
+						피우지 않아요</td>
 				</tr>
 				<tr>
-					<th>신앙</th>
-					<th><input name="believe" value="${vo.believe}">radio
-						타입</th>
+					<th>종교</th>
+					<td><input type="radio"
+						name="believe" value="1"
+						<c:if test="${vo.believe == 1}"> checked="checked"</c:if>>개신교<br>
+						<input type="radio" name="believe" value="2"
+						<c:if test="${vo.believe == 2}"> checked="checked"</c:if>>천주교<br>
+						<input type="radio" name="believe" value="3"
+						<c:if test="${vo.believe == 3}"> checked="checked"</c:if>>불교<br>
+						<input type="radio" name="believe" value="4"
+						<c:if test="${vo.believe == 4}"> checked="checked"</c:if>>무교<br>
+					</td>
 				</tr>
 				<tr>
-					<th>신장</th>
+					<th>키</th>
 					<th><input name="tall" value="${vo.tall}">cm</th>
 				</tr>
 
 				<tr>
 					<th>MBTI</th>
-					<th><input name="mbti" value="${vo.mbti}">type</th>
+					<th><input name="mbti" value="${vo.mbti}"></th>
 				</tr>
 
 				<tr>
-					<th>장소</th>
-					<th><input name="place" value="${vo.place}">radio 타입</th>
-				</tr>
+					<th>선호장소</th>
+					<td><input type="radio"
+						name="place" value="1"
+						<c:if test="${vo.place == 1}"> checked="checked"</c:if>>실내<br>
+						<input type="radio" name="place" value="2"
+						<c:if test="${vo.place == 2}"> checked="checked"</c:if>>야외</td>
 				<tr>
-					<th>연락처</th>
-					<th><input type="text" name="contact" value="${vo.contact}">radio
-						타입
-					<th></th>
+					<th>선호연락수단</th>
+					<td> <input type="radio"
+						name="contact" value="1"
+						<c:if test="${vo.contact == 1}"> checked="checked"</c:if>>카톡<br>
+						<input type="radio" name="contact" value="2"
+						<c:if test="${vo.contact == 2}"> checked="checked"</c:if>>전화</td>
 				</tr>
 			</table>
 
