@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="chart">
+
+	<select id="list5" parameterType="chartVO"
+		resultType="chartVO"> <!-- 실내 vs 실외 -->
+	    select PLACE from IDEALTYPE2
+	</select>
+	
+	<select id="list6" parameterType="chartVO"
+		resultType="chartVO"> <!-- 연상 vs 연하 vs 동갑 -->
+	    select * from IDEALTYPE2
+	</select>
+
+</mapper>

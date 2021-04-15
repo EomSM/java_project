@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bbs">
+
+<!--crud 4가지  -->
+
+	<insert id="insert" parameterType="bbsVO">
+		insert into BBS values (bid_seq.nextval,#{btitle},#{bcontent},sysdate,#{bwriter})
+	</insert>
+	<delete id="delete" parameterType="bbsVO">
+		delete from BBS where bid = #{bid}
+	</delete>
+	<update id="update" parameterType="bbsVO">
+		update BBS set btitle = #{btitle}, bcontent = #{bcontent} where bid = #{bid}
+	</update>
+	<select id="selectall" resultType = "int">
+		select count(*) from BBS
+	</select>
+	<select id="select" parameterType="bbsVO" resultType = "bbsVO">
+		select * from BBS where bid = #{bid}
+	</select>
+	<select id="selectpage" resultType = "bbsVO">
+		select * from (select rownum rnum, BBS.* from (select * from BBS order by bid desc) BBS) where rnum between #{list[0]} and #{list[1]}
+	</select>
+
+
+</mapper>
